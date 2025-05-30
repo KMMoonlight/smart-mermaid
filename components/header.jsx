@@ -22,6 +22,24 @@ export function Header({
           <span className="text-lg font-bold">Smart Mermaid</span>
         </div>
         <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            {hasUnlimitedAccess ? (
+              <span className="text-green-600 font-semibold">无限量</span>
+            ) : (
+              <>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={onContactClick}
+                  title="联系作者获取更多使用次数"
+                  className="h-6 w-6 p-0 text-muted-foreground hover:text-primary"
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+                剩余: <span className={remainingUsage <= 1 ? "text-red-500 font-bold" : "text-green-600 font-semibold"}>{remainingUsage}</span>/{usageLimit}
+              </>
+            )}
+          </div>
           <Button 
             variant="ghost" 
             size="icon" 
